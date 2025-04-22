@@ -77,7 +77,8 @@ export default function DifferentiatorsTabs() {
                     animate={{ opacity: 1, x: 0 }}
                     exit={{ opacity: 0, x: 50 }}
                     transition={{ duration: 0.4 }}
-                    className="bg-gradient-to-br from-white via-green-50 to-green-100 p-8 rounded-xl shadow-xl min-h-[300px]"
+                    className="bg-gradient-to-br from-white via-green-50 to-green-100 p-8 rounded-xl shadow-xl min-h-[300px] max-w-fit"
+
                 >
                     <motion.div
                         initial="hidden"

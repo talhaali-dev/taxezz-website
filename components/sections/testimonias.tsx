@@ -9,6 +9,7 @@ import {
     CarouselNext,
     CarouselPrevious,
 } from "@/components/ui/carousel";
+import Image from "next/image";
 
 // Define testimonial type
 type Testimonial = {
@@ -18,6 +19,7 @@ type Testimonial = {
     author: string;
     position: string;
     company: string;
+    image: string;
 };
 
 // Mock data for testimonials
@@ -29,6 +31,7 @@ const testimonials: Testimonial[] = [
         author: "Morgan Hoffmann",
         position: "Group Financial Accountant",
         company: "Bradken",
+        image: "/person.jpg"
     },
     {
         id: 2,
@@ -37,6 +40,8 @@ const testimonials: Testimonial[] = [
         author: "Ville Räsänen",
         position: "Senior Finance Manager",
         company: "HMD Global",
+        image: "/person.jpg"
+
     },
     {
         id: 3,
@@ -45,6 +50,8 @@ const testimonials: Testimonial[] = [
         author: "Sarah Johnson",
         position: "Chief Financial Officer",
         company: "TechGrowth",
+        image: "/person.jpg"
+
     },
     {
         id: 4,
@@ -53,6 +60,8 @@ const testimonials: Testimonial[] = [
         author: "Michael Chen",
         position: "Director of Finance",
         company: "GlobalEdge",
+        image: "/person.jpg"
+
     },
     {
         id: 5,
@@ -61,6 +70,8 @@ const testimonials: Testimonial[] = [
         author: "Sarah Patel",
         position: "Residential Portfolio Investor",
         company: "",
+        image: "/person.jpg"
+
     },
     {
         id: 6,
@@ -69,6 +80,8 @@ const testimonials: Testimonial[] = [
         author: "John Wu",
         position: "Real Estate Developer",
         company: "",
+        image: "/person.jpg"
+
     },
     {
         id: 7,
@@ -77,6 +90,8 @@ const testimonials: Testimonial[] = [
         author: "Maria Gonzalez",
         position: "Commercial Property Owner",
         company: "",
+        image: "/person.jpg"
+
     },
     {
         id: 8,
@@ -85,28 +100,45 @@ const testimonials: Testimonial[] = [
         author: "David Lee",
         position: "Real Estate Syndicate Manager",
         company: "",
+        image: "/person.jpg"
     },
 ];
 
-const TestimonialCard = ({ testimonial }: { testimonial: Testimonial }) => (
-    <div className="border border-white/20 rounded-lg p-8 md:p-10 h-full flex flex-col">
-        <div className="h-12 mb-8">
-            <img
-                src={testimonial.logo}
-                alt={`${testimonial.company} logo`}
-                className="h-full object-contain object-left"
-            />
-        </div>
-        <p className="text-white text-lg md:text-xl mb-8 flex-grow">
-            {testimonial.content}
-        </p>
-        <div className="mt-auto">
-            <h3 className="text-xl md:text-2xl font-medium text-yellow-300 mb-1">
-                {testimonial.author}
-            </h3>
-            <p className="text-white/80">
-                {testimonial.position}
+const TestimonialCard: React.FC<{ testimonial: Testimonial }> = ({ testimonial }) => (
+    <div className="border border-white/20 rounded-lg h-full flex flex-col md:flex-row overflow-hidden">
+        <div className="p-8 md:p-10 md:w-1/2 flex flex-col">
+            <div className="h-12 mb-8">
+                <Image
+                    src={testimonial.logo}
+                    alt={`${testimonial.company ?? 'Logo'} logo`}
+                    width={120}
+                    height={48}
+                    className="object-contain"
+                    priority
+                />
+            </div>
+            <p className="text-white text-lg md:text-xl mb-8 flex-grow">
+                {testimonial.content}
             </p>
+            <div className="mt-auto">
+                <h3 className="text-xl md:text-2xl font-medium text-yellow-300 mb-1">
+                    {testimonial.author}
+                </h3>
+                <p className="text-white/80">
+                    {testimonial.position}
+                    {testimonial.company && `, ${testimonial.company}`}
+                </p>
+            </div>
+        </div>
+
+        <div className="md:w-1/2 w-full relative h-56 md:h-auto">
+            <Image
+                src={testimonial.image}
+                alt={testimonial.author}
+                fill
+                className="object-cover filter brightness-90 contrast-125"
+                priority
+            />
         </div>
     </div>
 );

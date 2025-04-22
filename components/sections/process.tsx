@@ -1,6 +1,7 @@
 import React from 'react'
 import DataCapabilitiesSection from '../ourProcess'
 import { TextAnimate } from '../magicui/text-animate'
+import WorkflowDashboard from '../workflow-dashboard'
 
 const Process = () => {
     return (
@@ -18,10 +19,6 @@ const Process = () => {
 
                 </p>
             </div>
-            {/* <div className='mt-8'>
-                <WorkflowDashboard />
-            </div> */}
-
             <DataCapabilitiesSection />
         </section>
     )
